@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form {
+  margin: auto;
+}
+
+.box{
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
