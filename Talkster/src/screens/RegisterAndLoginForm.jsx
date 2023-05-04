@@ -3,6 +3,7 @@ import "./RegisterAndLoginForm.css"
 import axios from "axios"
 import { UserContext } from "../UserContext"
 
+
 const RegisterAndLoginForm = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -16,40 +17,51 @@ const RegisterAndLoginForm = () => {
     setLoogedInUsername(username);
     setId(data.id)
   }
+
   return(
     <div className="container">
-      <form className="register-form" onSubmit={handleSubmit}>
-        <input value={username} 
-                onChange={e => setUsername(e.target.value)} 
-                type="text" placeholder="username" 
-                className="box"/>
-        <input value={password} 
-                onChange={e => setPassword(e.target.value)} 
-                type="password" placeholder="password" 
-                className="box"/>
-        <button>
-          {isLoginOrRegister === 'register' ? 'Register' : 'login'}
-        </button>
-        <div>
-         {isLoginOrRegister === 'register' && (
-          <div>
-            Already a Talkster?
-            <button onClick={() => setLoginOrRegister('login')}>
-              Login here
-            </button>
+      <div className="wrapper">
+        <div className="title"><span>Talkster</span></div>
+        <form onSubmit={handleSubmit}>
+          <div className="row">
+            <i className="fas fa-user"></i>
+            <input value={username} 
+                    onChange={e => setUsername(e.target.value)} 
+                    type="text" placeholder="username"/>
           </div>
-         )}
-           {isLoginOrRegister === 'login' && (
-          <div>
-            Dont have an account?
-            <button onClick={() => setLoginOrRegister('register')}>
-              Register here
-            </button>
+          <div className="row">
+            <i className="fas fa-lock"></i>
+            <input value={password} 
+                    onChange={e => setPassword(e.target.value)} 
+                    type="password" placeholder="password"/>
           </div>
-         )}
-        </div>
-      </form>
+            <div className="button-container">
+              <button className="button-register">
+                {isLoginOrRegister === 'register' ? 'Register' : 'login'}
+              </button>
+            </div>
+            <div>
+            {isLoginOrRegister === 'register' && (
+              <div>
+                Already a Talkster?
+                <button className="button-login" onClick={() => setLoginOrRegister('login')}>
+                  Login here
+                </button>
+              </div>
+            )}
+              {isLoginOrRegister === 'login' && (
+              <div>
+                Dont have an account?
+                <button className="button-login" onClick={() => setLoginOrRegister('register')}>
+                  Register here
+                </button>
+              </div>
+            )}
+            </div>
+        </form>
+      </div>
     </div>
   )
 }
+
 export default RegisterAndLoginForm
